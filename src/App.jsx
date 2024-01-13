@@ -16,6 +16,7 @@ import AdminIngredientsManagement from "./pages/AdminIngredientsManagement";
 import AddNewRecipe from "./pages/AddNewRecipe";
 import { Suspense, lazy } from "react";
 import SpinnerFullPage from "./ui/SpinnerFullPage";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const AppLayout = lazy(() => import("./layouts/AppLayout"));
 const Home = lazy(() => import("./pages/Home"));
@@ -36,6 +37,7 @@ const App = () => {
 	return (
 		<DarkModeProvider>
 			<QueryClientProvider client={queryClient}>
+				<ReactQueryDevtools initialIsOpen={false} />
 				<BrowserRouter>
 					<Suspense fallback={<SpinnerFullPage />}>
 						<Routes>

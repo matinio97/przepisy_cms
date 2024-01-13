@@ -131,14 +131,22 @@ const AdminIngredientsManagement = () => {
 			<HorizontalLine />
 			<>
 				<Box>
-					{ingredients?.length > 0 ? (
-						ingredients?.map((ingredient) => (
-							<IngredientItem key={ingredient.id} ingredient={ingredient} />
-						)) || <Spinner />
+					{isLoading ? (
+						<>
+							<Spinner />
+						</>
 					) : (
-						<p style={{ padding: "1rem", margin: "0 auto" }}>
-							Brak takich składników
-						</p>
+						<>
+							{ingredients?.length > 0 ? (
+								ingredients?.map((ingredient) => (
+									<IngredientItem key={ingredient.id} ingredient={ingredient} />
+								))
+							) : (
+								<p style={{ padding: "1rem", margin: "0 auto" }}>
+									Brak takich składników
+								</p>
+							)}
+						</>
 					)}
 				</Box>
 				<HorizontalLine />

@@ -10,6 +10,7 @@ const StyledLink = styled(Link)`
 	color: var(--color-grey-700);
 	padding: 0.6rem 1rem;
 	transition: all 0.3s;
+	cursor: pointer;
 	&:hover {
 		background-color: var(--color-grey-300);
 	}

@@ -3,7 +3,6 @@ import { DEFAULT_USER_AVATAR } from "../context/variables";
 // import { adminAuthClient } from "./supabaseAdminAuth";
 
 export async function signup({ userName, email, password }) {
-	console.log(userName);
 	const { data, error } = await supabase.auth.signUp({
 		email: email,
 		password: password,

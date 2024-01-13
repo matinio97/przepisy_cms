@@ -11,14 +11,14 @@ import StyledLink from "../../ui/StyledLink";
 import DarkModeToggle from "../../ui/DarkModeToggle";
 
 const Box = styled.div`
-	grid-area: menu;
+	/* grid-area: menu; */
 	display: flex;
 	flex-direction: row;
 	gap: 0.6rem;
 	/* justify-content: center; */
 	justify-content: flex-end;
 	align-items: center;
-	cursor: pointer;
+	/* cursor: pointer; */
 `;
 
 const Image = styled.img`
@@ -45,7 +45,7 @@ const UserMenu = () => {
 
 	if (!isAuth)
 		return (
-			<Box>
+			<Box style={{ gridArea: "menu" }}>
 				<StyledLink to="/login">Zaloguj</StyledLink>
 				<DarkModeToggle />
 			</Box>
@@ -55,8 +55,10 @@ const UserMenu = () => {
 	const userName = user.user_metadata.userName || "";
 
 	return (
-		<Box>
-			<Box onClick={() => navigate(`/user-overview`)}>
+		<Box style={{ gridArea: "menu" }}>
+			<Box
+				onClick={() => navigate(`/user-overview`)}
+				style={{ cursor: "pointer" }}>
 				<Image src={userAvatar} />
 				<P style={{ minWidth: "max-content" }}>{userName}</P>
 			</Box>

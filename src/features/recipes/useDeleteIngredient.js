@@ -5,15 +5,14 @@ import { deleteIngredient as deleteIngredientApi } from "../../services/apiRecip
 export function useDeleteIngredient() {
 	const queryClient = useQueryClient();
 
-	const { mutate: deleteIngredient, isLoading: isDeleting } = useMutation({
-		mutationFn: (id) => deleteIngredientApi(id),
+	const { isLoading: isDeleting, mutate: deleteIngredient } = useMutation({
+		mutationFn: deleteIngredientApi,
 		onSuccess: () => {
 			toast.error("Składnik został usunięty.");
 
 			queryClient.invalidateQueries({
 				queryKey: ["ingredients"],
 			});
-			// queryClient.resetQueries();
 		},
 		onError: () =>
 			toast.error("Wystąpił błąd podczas zmiany usuwania tego składnika."),

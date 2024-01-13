@@ -56,7 +56,6 @@ export async function getRecipe(id) {
 		.single();
 
 	if (error) {
-		console.error(error);
 		throw new Error("Recipe not found");
 	}
 
@@ -69,11 +68,6 @@ export async function getUserRecipes({ user, page, pageSize }) {
 		.select("*", { count: "exact" })
 		.eq("author", user);
 
-	// const { data: recipes, error } = await supabase
-	// 	.from("recipes")
-	// 	.select("*", { count: "exact" })
-	// 	.eq("author", user);
-
 	if (page) {
 		const from = (page - 1) * pageSize;
 		const to = from + pageSize - 1;
@@ -83,7 +77,6 @@ export async function getUserRecipes({ user, page, pageSize }) {
 	const { data, error, count } = await query;
 
 	if (error) {
-		console.error(error);
 		throw new Error("Recipes not found");
 	}
 
@@ -136,7 +129,6 @@ export async function createUpdateRecipe(newRecipe, id) {
 	const { data, error } = await query.select().single();
 
 	if (error) {
-		console.log(error);
 		throw new Error("The recipe could not be updated");
 	}
 
@@ -301,15 +293,16 @@ export async function updateIngredientStatus(id) {
 
 	return data;
 }
+
 export async function deleteIngredient(id) {
 	const { data, error } = await supabase
 		.from("ingredients")
 		.delete()
 		.eq("id", id);
+
 	if (error) {
 		throw new Error("Ingredient could not be deleted");
 	}
-
 	return data;
 }
 

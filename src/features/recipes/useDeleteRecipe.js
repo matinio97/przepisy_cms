@@ -10,13 +10,10 @@ export function useDeleteRecipe() {
 			toast.success("Przepis pomyślnie usunięty");
 			queryClient.invalidateQueries([
 				{
-					// queryKey: ["recipe"],
-					// queryKey: ["recipes"],
 					queryKey: ["user-recipes"],
 				},
 				{ queryKey: ["recipes"] },
 			]);
-			// location.reload();
 		},
 		onError: () => toast.error("Wystąpił błąd podczas usuwania przepisu"),
 	});
